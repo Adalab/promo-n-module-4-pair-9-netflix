@@ -8,10 +8,10 @@ server.use(express.json());
 
 // init express aplication
 const serverPort = 4000;
-server.listen(serverPort, () => {
-  console.log(`Server listening at http://localhost:${serverPort}`);
-});
+server.listen(serverPort, () => {});
 server.get('/movies', (req, res) => {
+  //console.log('Query param FilterByGender:', req.query.genderFilterParam);
+  //const genderFilter = req.query.genderFilterParam;
   const response = {
     success: true,
     movies,
