@@ -7,14 +7,25 @@ server.use(cors());
 server.use(express.json());
 
 // init express aplication
-const serverPort = 4000;
-server.listen(serverPort, () => {});
+const serverPort = 4001;
+server.listen(serverPort, () => {
+  console.log(`Server listening at http://localhost:${serverPort}`);
+});
 server.get('/movies', (req, res) => {
-  //console.log('Query param FilterByGender:', req.query.genderFilterParam);
-  //const genderFilter = req.query.genderFilterParam;
+  console.log('Hola');
+  const genderFilterParam = req.query.gender;
+  console.log('Query params:', req.query.gender);
+  const filteredMovies = movies.filter((movie) => {
+    if (gender === '') {
+      return movie;
+    } else {
+      return movie.gender === genderFilterParam;
+    }
+  });
+
   const response = {
     success: true,
-    movies,
+    filteredMovies,
   };
   res.json(response);
 });
